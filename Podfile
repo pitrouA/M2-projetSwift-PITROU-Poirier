@@ -6,7 +6,7 @@ target 'liste' do
   use_frameworks!
 
   # Pods for liste
-pod 'Alamofire', '4.7'
+pod 'Alamofire' , '~>4.6'
 pod 'Alamofire-SwiftyJSON'
 
 
