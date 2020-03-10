@@ -149,12 +149,16 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="descriptionCell" destination="rQx-4b-OAb" id="c5b-Iv-BRD"/>
-                                            <outlet property="imageCell" destination="ctd-Nx-Ziu" id="S2v-Wo-jX2"/>
-                                            <outlet property="titleCell" destination="oBF-Sg-ooi" id="8hl-q7-NNo"/>
+                                            <outlet property="descriptionCell" destination="rQx-4b-OAb" id="rz1-nn-6Kk"/>
+                                            <outlet property="imageCell" destination="ctd-Nx-Ziu" id="VjF-Bq-HpM"/>
+                                            <outlet property="titleCell" destination="oBF-Sg-ooi" id="gZr-VM-STd"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="8rJ-Kc-sve" id="B3l-A9-asz"/>
+                                    <outlet property="delegate" destination="8rJ-Kc-sve" id="LWP-KF-Oge"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -162,7 +166,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Second" image="second" id="cPa-gy-q4n"/>
                     <connections>
-                        <outlet property="tableView" destination="iet-sp-yKx" id="665-6d-org"/>
+                        <outlet property="tableView" destination="iet-sp-yKx" id="lfE-7U-Ndo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
@@ -190,7 +194,7 @@
         <!--Detail View Controller-->
         <scene sceneID="TVY-Z2-nwH">
             <objects>
-                <viewController storyboardIdentifier="DetailViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="coU-V3-Kl4" customClass="DetailViewController" customModule="liste" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailViewController" id="coU-V3-Kl4" customClass="DetailViewController" customModule="liste" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UZE-gl-4At">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
