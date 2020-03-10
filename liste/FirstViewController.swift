@@ -46,7 +46,7 @@ class FirstViewController: UIViewController, UITableViewDataSource {
         //tableview.delegate = self
         tableview.dataSource = self
         
-        Alamofire.request(url!, method: .get).responseJSON{
+        /*Alamofire.request(url!, method: .get).responseJSON{
             response in
             if(response.result.isSuccess){
                 let content : JSON =  JSON(response.result.value!)
@@ -57,7 +57,7 @@ class FirstViewController: UIViewController, UITableViewDataSource {
             }else{
                 print("Error : \(response.result.error!)")
             }
-        }
+        }*/
     }
 
 
