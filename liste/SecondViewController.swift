@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import CoreData
 
 class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     @IBOutlet weak var tableView: UITableView!
     // MARK: - Data
@@ -64,6 +67,56 @@ class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDa
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        let nouvellePersonne = Personne(context: context)
+        nouvellePersonne.nom = "Alice"
+        nouvellePersonne.age = 25
+        
+        let autrePersonne = Personne(context: context)
+        autrePersonne.nom = "Pierre"
+        autrePersonne.age = 52
+        
+        saveData()
+        
+        // Les données sont dans un fichier .sqlite qui se trouve dans :
+        // /Users/<VOUS>/Library/Developer/CoreSimulator/Devices/FF7B856D-3118-4810-9A41-0F925C1FD30C/data/Containers/Data/Application/6AFB589E-9139-4CDA-AA80-75007AFC7829/Library/Application Support/<NOM_PROJET>.sqlite
+        // Remplacer FF7B856D-3118-4810-9A41-0F925C1FD30C et 6AFB589E-9139-4CDA-AA80-75007AFC7829 par les valeurs adéquates
+        // Si le répertoire Library n'est pas visible (car caché), vous pouvez le rendre visible en excétutant dans le terminal la commande :
+        // chflags nohidden ~/Library
+        
+        // MARK: - Lecture de données (requêtes)
+        
+        //        let requete : NSFetchRequest<Personne> = Personne.fetchRequest() // Le type NSFetchRequest<Personne> doit être donné obligatoirement
+        //        do {
+        //            let resultas = try context.fetch(requete)
+        //            print(resultas)
+        //        } catch {
+        //            print("Erreur lecture données : \(error)")
+        //        }
+        
+        // MARK: - Lecture de données (requêtes avec conditions)
+        
+        let texte = "i"
+        let requete : NSFetchRequest<Personne> = Personne.fetchRequest()
+        requete.predicate = NSPredicate(format: "nom CONTAINS %@", texte)
+        // CONTAINS[cd] pour ignorer la casse [c] et ignorer les diacritiques [d] (Les signes accentués DìÅçrîtïc sont les caractères accentués étendus, y compris les ß, µ, œ, etc)
+        requete.sortDescriptors = [NSSortDescriptor(key: "nom", ascending: true)]
+        do {
+            let resultas = try context.fetch(requete)
+            print(resultas)
+        } catch {
+            print("Erreur lecture données : \(error)")
+        }
+    }
+    
+    func saveData() -> Void {
+        do {
+            try context.save()
+            print("Sauvegarde dans la base avec succès")
+        } catch {
+            print("Erreur sauvegarder CoreData : \(error)")
+        }
+        
     }
 
 
