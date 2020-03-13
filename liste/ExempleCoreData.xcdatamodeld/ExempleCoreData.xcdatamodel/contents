@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18A391" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Personne" representedClassName="Personne" syncable="YES" codeGenerationType="class">
-        <attribute name="age" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="nom" optional="YES" attributeType="String" syncable="YES"/>
+    <entity name="Projet" representedClassName="Projet" syncable="YES" codeGenerationType="class">
+        <attribute name="nomProjet" optional="YES" syncable="YES"/>
+        <relationship name="relationProjetTache" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Tache" syncable="YES"/>
     </entity>
     <entity name="Tache" representedClassName="Tache" syncable="YES" codeGenerationType="class">
         <attribute name="dateDebut" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
@@ -12,7 +12,7 @@
         <attribute name="nom" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Personne" positionX="-179.984375" positionY="-117" width="128" height="75"/>
         <element name="Tache" positionX="-155.9921875" positionY="13.00390625" width="128" height="120"/>
+        <element name="Projet" positionX="-14.8046875" positionY="-74.00390625" width="127.8046875" height="73"/>
     </elements>
 </model>
