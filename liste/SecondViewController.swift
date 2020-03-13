@@ -16,6 +16,8 @@ class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var tableView: UITableView!
     // MARK: - Data
     
+    @IBOutlet weak var tempsTotalToolbar: UIToolbar!
+    @IBOutlet weak var tempsTotalLabel: UIBarButtonItem!
     /*var headlines = [
         Headline(id: 1, title: "Pomme", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque id ornare tortor, quis dictum enim. Morbi convallis tincidunt quam eget bibendum. Suspendisse malesuada maximus ante, at molestie massa fringilla id.", image: "Apple"),
         Headline(id: 2, title: "Banane", text: "Ut eget massa erat. Morbi mauris diam, vulputate at luctus non, finibus et diam. Morbi et felis a lacus pharetra blandit.", image: "Banana"),
@@ -164,7 +166,9 @@ class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 let r = gregorian?.components(NSCalendar.Unit.second, from: tache.dateDebut!, to: tache.dateFin!, options:.matchFirst)
                 
                 print("temps : ")
-                print(r!.second)
+                print(r!.second!)
+                
+                //faire la maj de date fin
                 
                 
             }else{
@@ -172,6 +176,15 @@ class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDa
             }
         }else{
             tache.dateDebut = Date()
+        }
+    }
+    
+    func returnFromModalView(segue: UIStoryboardSegue){
+        //appelee au retour du modal
+        
+        if let modalVC = segue.source as? PopupController, segue.identifier == "mySegueId" {
+            let text = modalVC.texteField.text
+            tempsTotalLabel.title = text
         }
     }
     

@@ -9,14 +9,19 @@
 import UIKit
 
 class PopupController: UIViewController {
-
+    @IBOutlet weak var texteField: UITextView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
     
     @IBAction func dismissPopup(_ sender: UIButton) {
+        
+        //code pour créer une nouvelle tache
+        
+        
+        
         dismiss(animated: true, completion: nil)
     }
     
