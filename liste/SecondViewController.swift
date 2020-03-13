@@ -143,13 +143,15 @@ class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         if(sender.tag == 1){
             sender.setImage(UIImage(named:"croix"), for: UIControl.State.normal)
-            sender.tag = 1
+            sender.tag = 0
             saveDateFor(tasks[indexInTabTaches])
         }else{
             sender.setImage(UIImage(named:"rond"), for: UIControl.State.normal)
-            sender.tag = 0
+            sender.tag = 1
             saveDateFor(tasks[indexInTabTaches])
         }
+        
+        sender.setNeedsDisplay()
     }
     
     func saveDateFor(_ tache: Tache){
