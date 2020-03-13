@@ -145,13 +145,25 @@ class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
 
     @IBAction func changeFormButton(_ sender: UIButton) {
-        if(sender.tag == 0){
+        
+        let buttonPosition = sender.convert(CGPoint(), to:tableView)
+        let indexInTabTaches: Int = (tableView.indexPathForRow(at:buttonPosition)?.row)!
+        
+        if(sender.tag == 1){
             sender.setImage(UIImage(named:"croix"), for: UIControl.State.normal)
             sender.tag = 1
+            saveDateFor(tasks[indexInTabTaches])
         }else{
             sender.setImage(UIImage(named:"rond"), for: UIControl.State.normal)
             sender.tag = 0
+            saveDateFor(tasks[indexInTabTaches])
         }
+    }
+    
+    func saveDateFor(_ tache: Tache){
+        print("Ok, ça marche avec : ")
+        print(tache)
+        //code pour sauvegarde de la dateDebut, fin et maj fin
     }
     
 }
