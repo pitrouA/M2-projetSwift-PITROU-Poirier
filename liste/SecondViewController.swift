@@ -144,6 +144,15 @@ class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
     }
 
-
+    @IBAction func changeFormButton(_ sender: UIButton) {
+        if(sender.tag == 0){
+            sender.setImage(UIImage(named:"croix"), for: UIControl.State.normal)
+            sender.tag = 1
+        }else{
+            sender.setImage(UIImage(named:"rond"), for: UIControl.State.normal)
+            sender.tag = 0
+        }
+    }
+    
 }
 
