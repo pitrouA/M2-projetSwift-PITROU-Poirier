@@ -144,12 +144,11 @@ class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if(sender.tag == 1){
             sender.setImage(UIImage(named:"croix"), for: UIControl.State.normal)
             sender.tag = 0
-            saveDateFor(tasks[indexInTabTaches])
         }else{
             sender.setImage(UIImage(named:"rond"), for: UIControl.State.normal)
             sender.tag = 1
-            saveDateFor(tasks[indexInTabTaches])
         }
+        saveDateFor(tasks[indexInTabTaches])
         
         sender.setNeedsDisplay()
     }
@@ -164,6 +163,7 @@ class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 let gregorian = NSCalendar(calendarIdentifier:NSCalendar.Identifier.gregorian)
                 let r = gregorian?.components(NSCalendar.Unit.second, from: tache.dateDebut!, to: tache.dateFin!, options:.matchFirst)
                 
+                print("temps : ")
                 print(r!.second)
                 
                 
