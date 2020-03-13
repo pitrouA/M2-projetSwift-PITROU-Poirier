@@ -16,27 +16,30 @@ class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var tableView: UITableView!
     // MARK: - Data
     
-    var headlines = [
+    /*var headlines = [
         Headline(id: 1, title: "Pomme", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque id ornare tortor, quis dictum enim. Morbi convallis tincidunt quam eget bibendum. Suspendisse malesuada maximus ante, at molestie massa fringilla id.", image: "Apple"),
         Headline(id: 2, title: "Banane", text: "Ut eget massa erat. Morbi mauris diam, vulputate at luctus non, finibus et diam. Morbi et felis a lacus pharetra blandit.", image: "Banana"),
         Headline(id: 3, title: "Melon", text: "Aliquam egestas ultricies dapibus. Nam molestie nunc in ipsum vehicula accumsan quis sit amet quam. Sed vel feugiat eros.", image: "Cantaloupe"),
         Headline(id: 4, title: "Abricot", text: "Nulla vitae elit libero, a pharetra augue. Donec ullamcorper nulla non metus auctor fringilla. Cras mattis consectetur purus sit amet fermentum. Sed posuere consectetur est at lobortis.", image: "Apricot"),
-        ]
+        ]*/
+    
+    var tasks = [Tache]()
     
     // MARK: - Table view data source
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return headlines.count
+        return tasks.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         print("Cellules ajout2")
         let cell = tableView.dequeueReusableCell(withIdentifier: "LabelCell", for: indexPath) as! TableViewCell
         
-        let headline = headlines[indexPath.row]
-        cell.titleCell?.text = headline.title
-        cell.descriptionCell?.text = headline.text
-        cell.imageCell?.image = UIImage(named: headline.image)
+        //let headline = headlines[indexPath.row]
+        let headline = tasks[indexPath.row]
+        cell.titleCell?.text = headline.nom
+        cell.descriptionCell?.text = headline.descriptionM
+        cell.imageCell?.image = UIImage(named: headline.image!)
         
         return cell
     }
@@ -47,9 +50,9 @@ class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let DvC = Storyboard.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
         tableView.deselectRow(at: indexPath, animated: true)
         
-        DvC.imageCurrent = headlines[indexPath.row].image
-        DvC.titleCurrent = headlines[indexPath.row].title
-        DvC.desriptionCurrent = headlines[indexPath.row].text
+        DvC.imageCurrent = tasks[indexPath.row].image!
+        DvC.titleCurrent = tasks[indexPath.row].nom!
+        DvC.desriptionCurrent = tasks[indexPath.row].descriptionM!
         
         self.navigationController?.pushViewController(DvC, animated: true)
     }
@@ -59,9 +62,18 @@ class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if editingStyle == .delete {
             print("Cellule supprimée")
             
-            self.headlines.remove(at: indexPath.row)
+            self.tasks.remove(at: indexPath.row)
             self.tableView.deleteRows(at: [indexPath], with: .automatic)
         }
+    }
+    
+    func creerNouvelleTache(_ nom: String, _ description: String, _ image: String) -> Tache{
+        let tache = Tache(context: context)
+        tache.nom = nom
+        tache.descriptionM = description
+        tache.image = image
+        
+        return tache;
     }
     
     override func viewDidLoad() {
@@ -75,6 +87,19 @@ class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let autrePersonne = Personne(context: context)
         autrePersonne.nom = "Pierre"
         autrePersonne.age = 52
+        
+        let tache1 = creerNouvelleTache("Ma tache 1", "Ceci est une description improvisée écrite pour les besoins du test", "Banana")
+        let tache2 = creerNouvelleTache("Ma tache 2", "ryyyyyyyy","Cantaloupe")
+        let tache3 = creerNouvelleTache("Ma tache 3", "J'aime les abricots, ils sont tellement oranges et lumineux, ils me donnent envie de jongler avec.","Apricot")
+        let tache4 = creerNouvelleTache("Ma tache 4", "rrrrrrrrrrrrrr","Apple")
+        
+        tasks.append(tache1)
+        tasks.append(tache2)
+        tasks.append(tache3)
+        tasks.append(tache4)
+        
+        //let requete2 : NSFetchRequest<Tache> = Tache.fetchRequest()
+        
         
         saveData()
         
