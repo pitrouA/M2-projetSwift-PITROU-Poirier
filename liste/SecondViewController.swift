@@ -164,6 +164,21 @@ class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDa
         print("Ok, ça marche avec : ")
         print(tache)
         //code pour sauvegarde de la dateDebut, fin et maj fin
+        if(tache.dateDebut != nil){
+            if(tache.dateFin != nil){
+                //let calendar = NSCalendar.current
+                let gregorian = NSCalendar(calendarIdentifier:NSCalendar.Identifier.gregorian)
+                let r = gregorian?.components(NSCalendar.Unit.second, from: tache.dateDebut!, to: tache.dateFin!, options:.matchFirst)
+                
+                print(r!.second)
+                
+                
+            }else{
+                tache.dateFin = Date()
+            }
+        }else{
+            tache.dateDebut = Date()
+        }
     }
     
 }
