@@ -80,14 +80,6 @@ class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDa
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        let nouvellePersonne = Personne(context: context)
-        nouvellePersonne.nom = "Alice"
-        nouvellePersonne.age = 25
-        
-        let autrePersonne = Personne(context: context)
-        autrePersonne.nom = "Pierre"
-        autrePersonne.age = 52
-        
         let tache1 = creerNouvelleTache("Ma tache 1", "Ceci est une description improvisée écrite pour les besoins du test", "Banana")
         let tache2 = creerNouvelleTache("Ma tache 2", "ryyyyyyyy","Cantaloupe")
         let tache3 = creerNouvelleTache("Ma tache 3", "J'aime les abricots, ils sont tellement oranges et lumineux, ils me donnent envie de jongler avec.","Apricot")
@@ -121,7 +113,7 @@ class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         // MARK: - Lecture de données (requêtes avec conditions)
         
-        let texte = "i"
+        /*let texte = "i"
         let requete : NSFetchRequest<Personne> = Personne.fetchRequest()
         requete.predicate = NSPredicate(format: "nom CONTAINS %@", texte)
         // CONTAINS[cd] pour ignorer la casse [c] et ignorer les diacritiques [d] (Les signes accentués DìÅçrîtïc sont les caractères accentués étendus, y compris les ß, µ, œ, etc)
@@ -131,7 +123,7 @@ class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDa
             print(resultas)
         } catch {
             print("Erreur lecture données : \(error)")
-        }
+        }*/
     }
     
     func saveData() -> Void {

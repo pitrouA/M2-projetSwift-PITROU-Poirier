@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18A391" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Projet" representedClassName="Projet" syncable="YES" codeGenerationType="class">
-        <attribute name="nomProjet" optional="YES" syncable="YES"/>
+        <attribute name="nomProjet" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="relationProjetTache" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Tache" syncable="YES"/>
     </entity>
     <entity name="Tache" representedClassName="Tache" syncable="YES" codeGenerationType="class">
